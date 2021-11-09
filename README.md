@@ -4,7 +4,10 @@
 <h4>Запуск БД в Docker</h4>
 
 ```bash
+# с удалением контейнера
 sudo docker run --name microblog -e POSTGRES_PASSWORD='qwerty' -e POSTGRES_DB=microblog -p 5436:5432 -d --rm postgres
+# без удаления контейнера
+sudo docker run --name microblog -e POSTGRES_PASSWORD='qwerty' -e POSTGRES_DB=microblog -p 5436:5432 -d postgres
 ```
 
 <h4>Инициализация дирректории с миграциями</h4>
