@@ -1,9 +1,13 @@
 from fastapi import FastAPI
 
 from routes import routes
+from src.config.settings import settings
 
 
-app = FastAPI()
+app = FastAPI(
+    title=settings.PROJECT_NAME, 
+    openapi_url=f"{settings.API_V1_STR}/openapi.json"
+)
 
 
 # @app.middleware("http")
@@ -17,6 +21,6 @@ app = FastAPI()
 #     return response
 
 
-app.include_router(routes)
+app.include_router(routes, prefix=settings.API_V1_STR)
 
 

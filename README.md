@@ -11,11 +11,13 @@ sudo docker run --name microblog -e POSTGRES_PASSWORD='qwerty' -e POSTGRES_DB=mi
 ```
 
 <h4>Инициализация дирректории с миграциями</h4>
+
 ```bash
 alembic init migrations
 ```
 
 <h4>Создание миграций</h4>
+
 ```bash
 # создание файла с миграции
 alembic revision --autogenerate -m "Название миграции"
@@ -24,6 +26,7 @@ alembic upgrade head
 ```
 
 <h4>Зайти в базу данных</h4>
+
 ```bash
 sudo docker exec -it container_id bin/bash
 psql -U postgres

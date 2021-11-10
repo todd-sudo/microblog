@@ -17,6 +17,7 @@ from src.user import schemas, models
 from src.user.utils import get_db, get_current_user
 from src.user.services import crud_user
 
+
 router = APIRouter()
 
 

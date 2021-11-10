@@ -8,7 +8,7 @@ from src.microblog.models import Post
 from src.microblog.schemas.post import PostCreate, PostUpdate
 
 
-class CRUDItem(CRUDBase[Post, PostCreate, PostUpdate]):
+class CRUDPost(CRUDBase[Post, PostCreate, PostUpdate]):
     def create_with_owner(
         self, db: Session, *, obj_in: PostCreate, user_id: int
     ) -> Post:
@@ -31,4 +31,4 @@ class CRUDItem(CRUDBase[Post, PostCreate, PostUpdate]):
         )
 
 
-item = CRUDItem(Post)
+crud_post = CRUDPost(Post)
