@@ -8,8 +8,8 @@ from alembic import context
 
 sys.path = ['', '..'] + sys.path[1:]
 
-from core.db import SQLALCHEMY_DATABASE_URL
-from core.base import Base
+from src.config.settings import settings
+from src.core.base import Base
 
 
 config = context.config
@@ -32,7 +32,7 @@ def run_migrations_offline():
     Calls to context.execute() here emit the given string to the
     script output.
     """
-    url = config.get_main_option(SQLALCHEMY_DATABASE_URL)
+    url = config.get_main_option(settings.SQLALCHEMY_DATABASE_URI)
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -51,7 +51,7 @@ def run_migrations_online():
     and associate a connection with the context.
     """
     configuration = config.get_section(config.config_ini_section)
-    configuration['sqlalchemy.url'] = SQLALCHEMY_DATABASE_URL
+    configuration['sqlalchemy.url'] = settings.SQLALCHEMY_DATABASE_URI
     connectable = engine_from_config(
         configuration,
         prefix="sqlalchemy.",

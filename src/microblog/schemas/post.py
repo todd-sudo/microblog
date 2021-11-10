@@ -1,11 +1,13 @@
 from datetime import datetime
+from typing import Optional
 
 from pydantic import BaseModel
 
 
 class PostBase(BaseModel):
+    id: int
     title: str
-    text: str
+    text: Optional[str] = None
     date: datetime
 
     class Config:
@@ -13,8 +15,16 @@ class PostBase(BaseModel):
 
 
 class PostList(PostBase):
-    id: int
+    pass
 
 
 class PostCreate(PostBase):
+    pass
+
+
+class PostUpdate(PostBase):
+    pass
+
+
+class PostInDB(PostBase):
     pass

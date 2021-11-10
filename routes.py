@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from microblog import api
-from user import routes as user_routes
+from src.microblog import api
+from src.user import routes as user_routes
 
 
 routes = APIRouter()
