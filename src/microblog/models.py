@@ -1,7 +1,7 @@
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
-from src.core.base import Base
+from src.core.base_class import Base
 
 
 class Post(Base):

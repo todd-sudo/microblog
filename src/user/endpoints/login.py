@@ -75,7 +75,7 @@ def recover_password(email: str, db: Session = Depends(get_db)) -> Any:
 def reset_password(
     token: str = Body(...),
     new_password: str = Body(...),
-    db: Session = Depends(crud_user.get_db),
+    db: Session = Depends(get_db),
 ) -> Any:
     """
     Reset password
