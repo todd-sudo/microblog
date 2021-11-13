@@ -5,12 +5,12 @@ from fastapi.encoders import jsonable_encoder
 from pydantic.networks import EmailStr
 from sqlalchemy.orm import Session
 
+from src.service import get_db
 from src.config.settings import settings
 from src.core.utils import send_new_account_email
 from src.user import schemas, models
 from src.user.services import crud_user
 from src.user.utils import (
-    get_db,
     get_current_active_superuser, 
     get_current_active_user,
 )
@@ -39,8 +39,7 @@ def create_user(
     user_in: schemas.UserCreate,
     current_user: models.User = Depends(get_current_active_superuser),
 ) -> Any:
-    """
-    Create new user.
+    """ Create new user.
     """
     user = crud_user.user.get_by_email(db, email=user_in.email)
     if user:
@@ -65,8 +64,7 @@ def update_user_me(
     email: EmailStr = Body(None),
     current_user: models.User = Depends(get_current_active_user),
 ) -> Any:
-    """
-    Update own user.
+    """ Update own user.
     """
     current_user_data = jsonable_encoder(current_user)
     user_in = schemas.UserUpdate(**current_user_data)

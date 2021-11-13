@@ -46,16 +46,14 @@ def login_access_token(
 
 @router.post("/login/test-token", response_model=schemas.User)
 def test_token(current_user: models.User = Depends(get_current_user)) -> Any:
-    """
-    Test access token
+    """ Test access token
     """
     return current_user
 
 
 @router.post("/password-recovery/{email}", response_model=schemas.Msg)
 def recover_password(email: str, db: Session = Depends(get_db)) -> Any:
-    """
-    Password Recovery
+    """ Password Recovery
     """
     user = crud_user.get_by_email(db, email=email)
 
@@ -77,8 +75,7 @@ def reset_password(
     new_password: str = Body(...),
     db: Session = Depends(get_db),
 ) -> Any:
-    """
-    Reset password
+    """ Reset password
     """
     email = verify_password_reset_token(token)
     if not email:

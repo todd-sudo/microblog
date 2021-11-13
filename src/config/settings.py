@@ -37,6 +37,7 @@ class Settings(BaseSettings):
     EMAIL_TEST_USER: EmailStr = "todd.develop@gmail.com"
     FIRST_SUPERUSER: EmailStr = "todd.develop@gmail.com"
     FIRST_SUPERUSER_PASSWORD: str = "123456"
+    FIRST_SUPERUSER_FULL_NAME: str = "todd"
     USERS_OPEN_REGISTRATION: bool = True
 
     class Config:
@@ -44,4 +45,3 @@ class Settings(BaseSettings):
 
 
 settings = Settings()
-

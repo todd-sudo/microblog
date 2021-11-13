@@ -5,13 +5,17 @@ from pydantic import BaseModel
 
 
 class PostBase(BaseModel):
-    id: int
+
     title: str
     text: Optional[str] = None
     date: datetime
 
     class Config:
         orm_mode = True
+
+
+class PostDetail(PostBase):
+    id: int
 
 
 class PostList(PostBase):
@@ -23,8 +27,4 @@ class PostCreate(PostBase):
 
 
 class PostUpdate(PostBase):
-    pass
-
-
-class PostInDB(PostBase):
     pass
