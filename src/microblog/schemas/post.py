@@ -5,26 +5,31 @@ from pydantic import BaseModel
 
 
 class PostBase(BaseModel):
-
-    title: str
+    title: Optional[str] = None
     text: Optional[str] = None
-    date: datetime
+
+
+class PostCreate(PostBase):
+    title: str
+
+
+class PostUpdate(PostBase):
+    pass
+
+
+class PostInDBBase(PostBase):
+    id: int
+    title: str
+    date: datetime = datetime.now()
+    user_id: int
 
     class Config:
         orm_mode = True
 
 
-class PostDetail(PostBase):
-    id: int
-
-
-class PostList(PostBase):
+class Post(PostInDBBase):
     pass
 
 
-class PostCreate(PostBase):
-    pass
-
-
-class PostUpdate(PostBase):
+class PostInDB(PostInDBBase):
     pass

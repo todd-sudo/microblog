@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -10,6 +12,6 @@ class Post(Base):
     id = Column(Integer, primary_key=True, index=True, unique=True)
     title = Column(String)
     text = Column(String(length=320))
-    date = Column(DateTime)
+    date = Column(DateTime, nullable=True, default=datetime.now)
     user_id = Column(Integer, ForeignKey("user.id"))
     user = relationship("User")

@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from src.user.services import crud_user
 from src.user.schemas import user as user_schemas
 from src.config.settings import settings
-from src.core.db import Base
+from src.core.base_class import Base
 
 
 def init_db(db: Session) -> None:
